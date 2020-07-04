@@ -1,0 +1,103 @@
+/*
+---------------------------------------------------------------------
+	Оператор ^
+	Ищет все элементы, начинающиеся с знаечния
+	a[href^='http://website']  (<a href='http://website.com'>)
+	
+	Оператор $ 
+	Поиск соответствия в конце строки
+	img[src$='.png'] (<img src='photo.png' />
+
+	Оператор * 
+	Для поиска соответствия любой подстроке
+	a[href*='google'] 	(<a href='http://google.com'>)
+---------------------------------------------------------------------
+	Свойство box-sizing
+	(Для safari и firefox нужен префикс (-webkit- и -moz-))
+	 Размеры, относящиеся ко всему элементу, включая любые отступы и границы. 
+	
+		box-sizing:border-box; 	//  Для общей ширины и высоты объекта, включая отступы и границы
+		
+		box-sizing:content-box;   //  ширина и высота объекта относились только к содержимому
+---------------------------------------------------------------------
+	Свойство background-clip
+	Это свойство определяет, должен ли фон игнорироваться (усекаться), 
+	если он появляется либо внутри границы, либо в области отступов элемента. 
+	
+	background-clip:border-box; 		// Фон определяется во всех частях эл-та до внешнего края
+	background-clip:padding-box; 		// Фон внутри эл-та и заканчивается внешним краем его области отступов
+	background-clip:content-box; 		// Фон только внутри области содержимого элемента, 
+
+
+---Свойство background-origin 
+	С помощью этого свойства можно также указать, где должно располагаться фоновое изображение, 
+	определив для этого, где должен начинаться левый верхний угол данного изображения. 
+
+	background-origin:border-box;  // Начало фонового изображения должно быть в левом верхнем углу внешнего края границы: 
+	background-origin:padding-box;	//  Установить начало изображения в левый верхний внешний угол области отступов
+	background-origin:content-box;  //  установить начало изображения в левый верхний угол области внутреннего содержимого элемента
+
+---Свойство background-size 
+	background-size:wwpx hhpx;
+	background-size:wwpx auto;
+
+---Исользование в фоне нескольких изображени
+	 background : url('b1.gif') top    left  no-repeat,                    
+	 						 	url('b2.gif') top    right no-repeat,                    
+	 						 	url('b3.gif') bottom left  no-repeat,                    
+	 						 	url('b4.gif') bottom right no-repeat,                    
+	 						 	url('ba.gif') top          repeat-x,                    
+	 						 	url('bb.gif') left         repeat-y,                    
+	 						 	url('bc.gif') right        repeat-y,                    
+	 						 	url('bd.gif') bottom       repeat-x   
+
+---Прямоугольные тени
+		box-shadow:15px 15px 10px #888; 
+
+---Выход элемента за пределы размеров
+	overflow-x:hidden; 
+	overflow-x:visible; 
+	overflow-y:auto; 
+	overflow-y:scroll;
+
+---.columns {        
+						text-align          :justify;        
+						font-size           :16pt;        
+						-moz-column-count   :3;        
+						-moz-column-gap     :1em;        
+						-moz-column-rule    :1px solid black;        
+						-webkit-column-count:3;        
+						-webkit-column-gap  :1em;        
+						-webkit-column-rule :1px solid black;        
+						column-count        :3;        
+						column-gap          :1em;        
+						column-rule         :1px solid black; 
+						} 
+<div class='columns'>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cum deserunt soluta nostrum eum rem vel vero laudantium nobis adipisci aut, alias quisquam, assumenda eius neque tempora hic. Dolores, animi consectetur.</div>
+
+--- Цвета
+	Цвета HSL 		color:hsl(60, 100%, 50%); 
+	Цвета HSLA 		color:hsla(60, 100%, 50%, 0.3);(Непрозрачность)
+	Цвета RGB 		color:#ffff00; | color:rgb(255, 255, 0);	| color:rgb(100%, 100%, 0); 
+	Цвета RGBA 		color:rgba(0%, 60%, 40%, 0.4); (Непрозрачность)
+
+---Свойство opacity
+		opacity:0.25; 
+		opacity:'25';
+
+--- Свойство text-overflow 
+		(Выход за пределы - текст,подвергнувшийся учечению (для статей))
+		text-overflow:ellipsis;   // This is mo...
+
+		Чтобы это работало, требуется выполнить три условия.  
+		У элемента должно быть свойство overflow, настроенное на невидимость, например overflow:hidden.  
+		Элемент должен иметь свойство white-space:nowrap, настраивающее на ограничение текста. 
+		Ширина элемента должна быть меньше, чем усекаемый текст.
+
+---Свойство word-wrap (Перенос)
+		word-wrap:break-word
+
+---Загрузка шрифтов
+		<style>  h1 { font-family:'Lobster', arial, serif; }  </style> 
+		<link href='http://fonts.googleapis.com/css?family=Lobster' rel='stylesheet' type='text/css'>
+*/

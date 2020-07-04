@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	 <script src='OSC.js'></script>
+</head>
+<body>
+<!--  
+	Сочетание видео и холстов
+		http://html5doctor.com/video-canvas-magic.
+-->
+<!--
+		Элемент <video> и сопровождающий его тег <source> поддерживают следующие атрибуты:  
+		autoplay — заставляет видео запускаться на проигрывание сразу по готовности;  
+		controls — заставляет вывести панель управления;  
+
+		src — указывает исходное местоположение видеофайла;  
+		type — указывает кодек, используемый для создания видео; 
+		
+		loop — устанавливает видео на бесконечное проигрывание;  
+		muted — выключает звуковое сопровождение;  
+		poster — позволяет выбрать изображение, показываемое при проигрывании видео;  
+		preload — заставляет видео приступить к загрузке даже до того, как пользователь выберет команду Play (Воспроизвести);  
+
+		width — указывает ширину, с которой нужно показывать видео.  
+		height — указывает высоту, с которой нужно показывать видео;  
+
+	-->
+		  <video  id='myvideo' width='560' height='320'>
+				  <object width='560' height='320' type='application/x-shockwave-flash'    data='flowplayer.swf'>    
+				  	<param name='movie' value='flowplayer.swf'>    
+				  	<param name='flashvars' value='config={"clip": {"url": "http://tinyurl.com/html5video-mp4", "autoPlay":false, "autoBuffering":true}}'> 
+				  </object>
+ 					<!-- autoBuffering — если передано значение true, то, чтобы впоследствии свести к минимуму буферизацию при медленных подключениях, перед началом проигрывания видео будет предварительно загружено соответственно доступной пропускной способности-->	
+
+		  	<source src='movie.mp4' type='video/mp4'>      
+		  	<source src='movie.webm' type='video/webm'>      
+		  	<source src='movie.ogv' type='video/ogg'>    
+		  </video>
+
+		  <button onclick='playvideo()'>Play Video</button>    
+		  <button onclick='pausevideo()'>Pause Video</button>
+
+    <script>      
+    	function playvideo() {        O('myvideo').play()      }      
+    function pausevideo()  {        O('myvideo').pause()     }    
+  	</script> 
+
+<!-- AUDIO
+		 autoplay — заставляет аудио запускаться на проигрывание сразу по готовности;  
+		 controls — заставляет вывести панель управления;  
+		 loop — устанавливает аудио на бесконечное проигрывание;  
+		 preload — заставляет аудио приступить к загрузке даже до того, как пользователь выберет команду Play (Воспроизвести);  
+		 src — указывает исходное местоположение аудиофайла;  
+		 type — указывает кодек, используемый для создания аудио
+
+-->
+		  <audio  id='myaudio'> 
+		  	<!-- FLASH браузеры 	Скаай файл: (audioplayer.swf)-->
+		    <object type="application/x-shockwave-flash" data="audioplayer.swf" width="300" height="30">    
+		    <param name="FlashVars" value="mp3=audio.mp3&showstop=1&showvolume=1">  </object> 
+  			<!-- mp3 — URL-адрес аудиофайла MP3;  
+  				   showstop — если передано значение 1, выводится кнопка остановки, в противном случае она не показывается 			 	
+						 showvolume — если передано значение 1, выводится панель громкости, в противном случае она не показывается
+  			-->
+
+		  	<source src='audio.m4a' type='audio/aac'>  
+		  	<source src='audio.mp3' type='audio/mp3'>  
+		  	<source src='audio.ogg' type='audio/ogg'> 
+		  </audio>
+
+			 <button onclick='playaudio()'>Play Audio</button>    
+			 <button onclick='pauseaudio()'>Pause Audio</button>        
+
+			 <script>      
+			 	function playaudio()      {        O('myaudio').play()      }      
+			 	function pauseaudio()     {        O('myaudio').pause()      }    
+			 </script> 
+</body>
+</html>

@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body  style='text-align:center'>
+	<h1>Загрузка веб-страницы в DIV</h1>    
+	<div id='info'>Это предложение будет заменено</div>
+ 	
+ 	<script>      
+ 	$.post('/AJAX/urlpost.php', { url : 'amazon.com/gp/aw' }, function(data)
+ 					{       $('#info').html(data)      } )   
+ 	// $.get('/AJAX/urlget.php?url=amazon.com/gp/aw', function(data)      {        $('#info').html(data) } ) 
+ 	</script> 
+
+	
+</body>
+</html>

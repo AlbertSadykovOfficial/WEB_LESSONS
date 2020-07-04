@@ -1,0 +1,82 @@
+/*	Трансформации
+		
+		transform:none; (недопускать трансформацию обекта)
+
+		Св-ва
+		 matrix — трансформирует объект, применяя к нему матрицу значений;  
+		 translate — перемещает исходную точку элемента;  
+		 scale — масштабирует объект;  
+		 rotate — вращает объект;  
+		 skew — наклоняет объект
+		+
+			translateX,
+			scaleY
+
+		Трехмерная трансформация 
+		 perspective — освобождение элемента из двумерного пространства и создание третьего измерения, в котором он может перемещаться;  
+		 transform-origin — установка места, где все линии сходятся в одну точку;
+		 translate3d — перемещение элемента в другое место трехмерного пространства;  
+		 scale3d — изменение масштаба одного или нескольких измерений;  
+		 rotate3d — вращение элемента вокруг любой из осей X, Y и Z.
+
+		Сайт:  http:// tinyurl.com/3dcsstransforms  
+
+		Переходы (Анимация)
+		transition-property       :свойство;  transition-property:width, height, opacity; transition-property:all;
+		transition-duration       :время; 		transition-duration:1.25s; (Продолжительность)
+		transition-delay          :время; 		transition-delay:0.1s; (Задержка)
+			transition-timing-function:тип;
+			{  //Задание скорости
+				 ease — медленное начало, ускорение и медленное завершение;  
+				 linear — переход с постоянной скоростью;  
+				 ease-in — медленное начало, а затем быстрый переход до самого завершения;  
+				 ease-out — быстрое начало, сохранение высокой скорости почти до завершения и медленное завершение
+				 ease-in-out — медленное начало, быстрый переход, затем медленное завершение. 
+			// Конструктор  cubic-bezier. 
+				 transition-timing-function:cubic-bezier(0.25, 0.1, 0.25, 1); 
+			}
+		Сокращенный синтаксис
+		transition:all .3s linear .2s  //переход всех свойств в линейном режиме за период 0,3 с, после начальной (необязательной) задержки 0,2 с: 			
+
+*/
+.handme{
+	height: 100px;
+	width: 100px;
+	background-color: gray;
+	margin-top:100px;
+	margin-left: 100px;
+	transform:scale(1.5, 2) rotate(45deg); 
+}
+
+.trans3d{
+	margin-left: 500px;
+	margin-top: 50px;
+	height: 100px;
+	width: 100px;
+	background-color: gray;
+transform:perspective(200px) rotateX(10deg) rotateY(20deg) rotateZ(30deg);
+}
+
+ #square {        position          :absolute;        
+ 									top               :50px;        
+ 									left              :850px;        
+ 									width             :100px;        
+ 									height            :100px;        
+ 									padding           :2px;        
+ 									text-align        :center;        
+ 									border-width      :1px;        
+ 									border-style      :solid;        
+ 									background        :orange;        
+ 									transition        :all .8s ease-in-out;        
+ 										-moz-transition   :all .8s ease-in-out;
+ 									 	-webkit-transition:all .8s ease-in-out;        
+ 									 	-o-transition     :all .8s ease-in-out;        
+ 									 	-ms-transition    :all .8s ease-in-out; 
+ 				}
+ #square:hover {        background        :yellow;        
+ 												-moz-transform    :rotate(180deg);        
+ 												-webkit-transform :rotate(180deg);        
+ 												-o-transform      :rotate(180deg);        
+ 												-ms-transform     :rotate(180deg);        
+ 												transform         :rotate(180deg); 
+ 								}  

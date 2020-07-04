@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	
+		<script>
+			
+			if (typeof localStorage == 'undefined') 
+			{  
+			// Локальное хранилище недоступно, нужно сообщить об этом пользователю 
+			// и завершить работу. Или предложить сохранить данные на веб-сервере? 
+			}else
+			{
+				username = localStorage.getItem('username') 
+				password = localStorage.getItem('password')
+				 alert("The current values of 'username' and 'password' are\n\n" + username + " / " + password + "\n\nClick OK to assign values")
+			// Установка значений
+				localStorage.setItem('username', 'albert') 
+				localStorage.setItem('password', '1234')
+			// Сведения
+				username = localStorage.getItem('username') 
+				password = localStorage.getItem('password')
+				alert("The current values of 'username' and 'password' are\n\n" +    username + " / " + password + "\n\nClick OK to clear values")
+			// Удалить 
+				localStorage.removeItem('username') 
+				localStorage.removeItem('password')  
+				username = localStorage.getItem('username') 
+				password = localStorage.getItem('password')
+				 alert("The current values of 'username' and 'password' are\n\n" +  username + " / " + password) 
+			
+			// Полностью уничтожиить локальное хранилище домена
+				//localStorage.clear()
+
+			}
+		</script>	
+</body>
+</html>

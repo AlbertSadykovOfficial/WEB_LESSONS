@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	 <script src='/OSC.js'></script>
+</head>
+<body>
+	Текущее самое большое простое число:    
+	<span id='result'>0</span>
+ 	
+ 	<script>
+
+ 		// Для остановки веб-процесса:
+ 		// javascript:worker.terminate() В консоль
+
+ 		if (!!window.Worker)      // !! - проверка на существование
+ 		{        
+ 			var worker = new Worker('worker.js')
+
+      worker.onmessage = function (event)        
+      {          
+      	O('result').innerHTML = event.data;        
+      }      
+    }else{
+      alert("Рабочие веб-процессы не поддерживаются")      
+    } 
+
+
+ 	</script>
+	
+</body>
+</html>

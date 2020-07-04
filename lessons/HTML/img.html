@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="OSC.js"></script>
+</head>
+<body>
+	
+	<!--
+     <canvas id='mycanvas5' width='640' height='240'></canvas>
+     <canvas id='mycanvas6' width='640' height='240'></canvas>
+     	
+			<script>
+				canvas = O('mycanvas5')      
+			  context = canvas.getContext('2d')
+
+				image = new Image() 
+				image.src = 'Crocodile_33887.ico'
+				image.onload = function() {  
+					pattern = context.createPattern(image, 'repeat')  
+					/*
+						repeat — повторение изображения как по вертикали, так и по горизонтали;  
+						repeat-x — повторение изображения по горизонтали;  
+						repeat-y — повторение изображения по вертикали;  
+						no-repeat — отказ от повторения изображения. 
+					*/
+					context.fillStyle = pattern  
+					context.fillRect(20, 20, 600, 200)  // поставь (0,0,...)
+
+
+				}
+			</script>
+			<script>
+				canvas = O('mycanvas6')      
+			  context = canvas.getContext('2d')
+
+				image = new Image() 
+				image.src = 'Crocodile_33887.ico'
+
+				image.onload = function() 
+				{  
+					pattern = context.createPattern(image, 'repeat')  
+					context.fillStyle = pattern  
+					context.fillText( 'WickerpediA', 0, 0)  
+					context.strokeText('WickerpediA', 0, 0) 
+				}
+			</script>
+-->
+
+<canvas id='canvas1' width='1200' height='500'></canvas>
+			<script>
+					canvas = O('canvas1')   
+				S(canvas).border = '1px solid black'     
+			  context = canvas.getContext('2d')
+						
+						myimage = new Image() 
+						myimage.src = 'Crocodile_33887.ico' 
+						myimage.onload = function() { 
+							// Добавить тень ко всему
+							context.shadowOffsetX = 3  
+							 context.shadowOffsetY = 3  
+							 context.shadowBlur = 5  
+							 context.shadowColor = 'black' 
+
+							context.drawImage(myimage, 20, 20)  
+						context.drawImage(myimage, 140, 20, 220, 220) 
+						context.drawImage(myimage, 380, 20,  80, 220)
+
+						context.drawImage(myimage, 30, 30, 40, 40, 20, 140) 
+						context.drawImage(myimage, 30, 30, 40, 40, 20, 140, 100, 100)
+						}
+			</script>
+
+		<script>
+			/*
+				Пустой обьект
+				idata = createImageData(320, 240) 
+				
+				Объект из объекта
+				newimagedataobject = createImageData(imagedata) 
+				*/
+			myimage = new Image() 
+			myimage.src = 'photo.jpg'
+
+			myimage.onload = function() 
+			{  
+				context.drawImage(myimage, 0, 0)  
+				idata = context.getImageData(0, 0, myimage.width, myimage.height) // Массив**
+  			
+  			for (y = 0 ; y < myimage.height ; ++y)  {   
+  			 pos = y * myimage.width * 4
+    			for (x = 0 ; x < myimage.width ; ++x){      
+    				average =      ( idata.data[pos] + idata.data[pos + 1] + idata.data[pos + 2]) / 3 //Усредняем красн зел и син
+      			idata.data[pos] = average + 50 
+      			idata.data[pos + 1] = average      
+      			idata.data[pos + 2] = average - 50      
+      			pos += 4;    
+      		}  
+      	}  
+
+      	context.putImageData(idata, 560, 0) // Помещение
+      }
+      	/*	Массив**
+      		red   = idata.data[x * 4 + y * w * 4] 
+      		green = idata.data[x * 4 + y * w * 4 + 1] 
+      		blue  = idata.data[x * 4 + y * w * 4 + 2] 
+      		alpha = idata.data[x * 4 + y * w * 4 + 3]
+				
+				1пксель 	
+					idata.data[0] // Уровень красного 
+					idata.data[1] // Уровень зеленого 
+					idata.data[2] // Уровень синего 
+					idata.data[3] // Уровень альфа-прозрачности 
+				2писксель
+					idata.data[4] // Уровень касного
+      	*/
+		</script>
+</body>
+</html>

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body  style='text-align:center'>
+	 <h1>Загрузка веб-страницы в контейнер DIV</h1>    
+	 <div id='info'>Это предложение будет заменено</div>
+
+	 <script>      
+	/*	
+	 Некоторые браузеры могут кэшировать GET-запросы, притом что POST-запросы кэшированию никогда не подвергаются. Кэширование запроса нежелательно, потому что браузер просто-напросто заново отобразит то, что он получил в последний раз, и не станет обращаться к серверу за свежими входными данными.
+	 Решение : добавлять к запросу рандомный параметр, обеспичивающий уникальность URL-апроса
+
+	*/
+	  nocache = "&nocache=" + Math.random() * 1000000    
+	  request = new ajaxRequest()      
+	  request.open("GET", "urlget.php?url=amazon.com/gp/aw " + nocache, true)
+ 
+ 		
+ 	/*	
+ 			 При каждом изменении св-ва readyState вызывалась выбранная нами ф-ция асинхронность
+ 			 (AJAX позволяет реагировать на пользовательски ввод и редактировать содержание экрана)
+       Ф-ция обратного вызова: (т.к будет вызвана при оновлнии св-ва)
+				
+				Иной вид
+				request.onreadystatechange = ajaxCallback
+				
+				function ajaxCallback() 
+				{
+					if (this.readyState == 4)  
+					{    // какие-нибудь действия  
+					} 
+				}  
+	*/
+      request.onreadystatechange = function()      
+       {        
+       		if (this.readyState == 4)  //  0 = неинициализирован, 1 = загружается, 2 = загружен, 3 = в состоянии диалога и 4 = завершен 
+       			{          
+       				if (this.status == 200)          // Код статуса HTTP, возвращенный сервером (200 = Удачно)
+       					{            
+       						if (this.responseText != null)    //Данные, возвращенные сервером в текстовом формате         
+       							{              
+       								document.getElementById('info').innerHTML =this.responseText
+       							}            
+       							else alert("Ошибка AJAX: Данные не получены")          
+       					}          
+       						else alert( "Ошибка AJAX: " + this.statusText)  // Текст статуса HTTP, возвращенный сервером      
+       			}      
+       	}
+
+       	 request.send(null)	// AJAX высылает параметры серверу null-потому что ничего не передаем серверу
+ 				
+				 function ajaxRequest()  
+				 {    
+				 	try // Браузер не относится к семейству IE?    
+				 	{		// Да        
+				 			var request = new XMLHttpRequest()    
+				 	}
+				 	catch(e1){        
+				 		try // Это IE 6+?
+				 		{   // Да            
+				 			request = new ActiveXObject("Msxml2.XMLHTTP")        
+				 		}        
+				 		catch(e2){            
+				 			try // Это IE 5?            
+				 			{   // Да                
+				 				request = new ActiveXObject("Microsoft.XMLHTTP")            
+				 			}            
+				 			catch(e3) // Данный браузер не поддерживает AJAX            
+				 			{                
+				 				request = false            
+				 			}	        
+				 		}    
+				 	}    
+				 	return request  
+				 }
+ 
+	</script>
+</body>
+</html>
