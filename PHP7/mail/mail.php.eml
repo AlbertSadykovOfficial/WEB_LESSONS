@@ -1,0 +1,10 @@
+From: Почтовый Робот <somebody@mail.ru>	
+To: <?= $to ?> 
+Subject: Добрый День!	
+Content-type: text/plain; charset=utf-8	
+	
+Привет, <?= $to ?>!	
+<?= $text ?> 
+СОДЕРЖИМОЕ ПЕРЕМЕННЫХ ОКРУЖЕНИЯ НА МОМЕНТ ОТПРАВКИ ПИСЬМА:
+<?php print_r($_SERVER) ?>	
+Это сообщение сгенерировано Роботом.
